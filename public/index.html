@@ -1,0 +1,79 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS (Must be first) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- ShowDown.js (markdown to HTML) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+
+    <script>
+        const baseURL = 'https://gitlab.com/api/v4/projects/16271467/wikis/'
+        
+        function addRecipe(URL) {
+            fetch(URL)
+                .then(res => res.json())
+                .then(md =>  {
+                    let converter = new showdown.Converter();
+                    
+                    let card = document.createElement('div');
+                    card.classList.add('card', 'col-sm-12', 'col-md-6');
+
+                    let recipeContainer = document.createElement('div');
+                    recipeContainer.classList.add('recipe', 'card-body');
+                    
+                    let title = document.createElement('h1');
+                    title.innerHTML = md.title
+                    recipeContainer.innerHTML = converter.makeHtml(md.content);
+
+                    card.appendChild(recipeContainer);
+                    recipeContainer.insertBefore(title, recipeContainer.childNodes[0]);      
+                    document.querySelector('#main-container').appendChild(card)
+                });
+            }
+
+        fetch('https://gitlab.com/api/v4/projects/16271467/wikis')
+            .then(res => res.json())
+            .then(recipes => {
+                for (let recipe of recipes) {
+                    addRecipe(`${baseURL}${recipe.slug}`);
+                }
+            });
+    </script>
+    <title>Paige's Page</title>
+  </head>
+<!--                                                                                                 
+ ,adPPYb,d8  ,adPPYYba,  8b,dPPYba,   ,adPPYYba,  888888888   ,adPPYba,    ,adPPYb,d8  ,adPPYYba,  
+a8"    `Y88  ""     `Y8  88P'   `"8a  ""     `Y8       a8P"  a8"     "8a  a8"    `Y88  ""     `Y8  
+8b       88  ,adPPPPP88  88       88  ,adPPPPP88    ,d8P'    8b       d8  8b       88  ,adPPPPP88  
+"8a    ,d88  88,    ,88  88       88  88,    ,88  ,d8"       "8a,   ,a8"  "8a,   ,d88  88,    ,88  
+ `"YbbdP'88  `"8bbdP"Y8  88       88  `"8bbdP"Y8  888888888   `"YbbdP"'    `"YbbdP"Y8  `"8bbdP"Y8  
+         88                                                                aa,    ,88              
+         88                                                                 "Y8bbdP"               
+-->
+  <body>
+      <div class="container-fluid">
+        <div class="jumbotron text-center">
+          <h1>don't worry about getting measurements right</h1>
+          <p>i sure don't</p>
+        </div>
+          <div id="main-container" class="row">
+
+          </div>
+
+      </div>
+    <!-- Bootstrap JS, (Nothing After) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+  
