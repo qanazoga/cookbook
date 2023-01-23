@@ -1,8 +1,7 @@
 # Paige's Cookbook
 
 ### A few quick notes:
-- For the most part, I don't measure any of my ingredients, turn back now
-if this is an issue for you.
+- For the most part, I don't measure my spices, everything is done to taste.
 
 - I make changes to these recipes all the time while cooking, and mostly use 
 this as a siple guide to point me in the right direction. I encourage you to

@@ -13,7 +13,7 @@
     * [Tomato Soup](soups/tomato-soup.md)
     * [Broccoli-Bacon-Cheddar Soup]()
     * [Lemon-Butter Orzo](soups/lemon-butter-orzo.md)
-    * [Italian Lentil Soup](soups/italian-lentil-soup.md)
+    * [Lentil Soup](soups/lentil-soup.md)
 
 * Entrees
     * Pasta
